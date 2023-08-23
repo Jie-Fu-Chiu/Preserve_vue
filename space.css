@@ -97,10 +97,11 @@ body {
 .process .card i {
     font-size: 53px;
 }
-
+.process .next{
+}
 .process .next i {
     font-size: 20px;
-    margin-bottom: 27px;
+    /* margin-bottom: 27px; */
 }
 
 .process .card img {
