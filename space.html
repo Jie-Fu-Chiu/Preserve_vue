@@ -5,23 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>空間佈置-Preserve乾燥花</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="header and footer.css">
-    <link rel="stylesheet" href="space.css">
-    <script src="https://kit.fontawesome.com/2d432a1e75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/header and footer.css">
+    <link rel="stylesheet" href="./css/space.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/vue@next"></script>
 </head>
 
 <body>
     <div id="app">
-        <script>
-            AOS.init();
-        </script>
-
         <div class="nav_bg" id="nav_bg"></div>
-        <!-- <input type="checkbox" name="" id="menu-switch"> -->
 
         <div class="header">
             <nav class="logo">
@@ -31,17 +23,15 @@
                 <a v-for="menu in menuArray" :key="menu" :class="navClass" :href="menu.link">{{menu.name}}</a>
             </nav>
             <nav class="icon">
-                <a class="sign" href="signup.html"><i class="fa-solid fa-user" style="color: #9f9f9f;"></i></a>
-                <a href="buy.html"><i class="fa-solid fa-cart-shopping" style="color: #9f9f9f;"></i></a>
+                <a v-for="icon in iconArr" class="sign" :href="icon.iHref"><i :class="[icon.iClass1,icon.iClass2]"
+                        style="color: #9f9f9f;"></i></a>
             </nav>
 
 
             <div class="hb">
-                <!-- <label for="menu-switch"> -->
                 <span></span>
                 <span></span>
                 <span></span>
-                <!-- </label> -->
             </div>
         </div>
 
@@ -60,54 +50,16 @@
             </div>
             <div class="wrap" data-aos="fade-up" data-aos-duration="3000">
 
-                <div class="card">
-                    <i class="fa-solid fa-envelope-open-text" style="color: #a07b67;"></i>
-                    <span>免費諮詢</span>
+                <div class="cn" v-for="process in processArray" :key="process">
+                    <div class="card">
+                        <i :class="[process.pClass1,process.pClass2]" style="color: #a07b67;"></i>
+                        <span>{{process.name}}</span>
+                    </div>
+                    <div class="next">
+                        <i class="fa-solid fa-play" style="color: #a07b67;"></i>
+                    </div>
                 </div>
 
-                <div class="next">
-                    <i class="fa-solid fa-play" style="color: #a07b67;"></i>
-                </div>
-
-                <div class="card">
-                    <i class="fa-solid fa-comments" style="color: #a07b67;"></i>
-                    <span>專案討論</span>
-                </div>
-
-                <div class="next">
-                    <i class="fa-solid fa-play" style="color: #a07b67;"></i>
-                </div>
-
-                <div class="card">
-                    <i class="fa-solid fa-clipboard-list" style="color: #a07b67;"></i>
-                    <span>簽訂合約</span>
-                </div>
-
-                <div class="next">
-                    <i class="fa-solid fa-play" style="color: #a07b67;"></i>
-                </div>
-
-                <div class="card">
-                    <i class="fa-solid fa-ruler-combined" style="color: #a07b67;"></i>
-                    <span>現場丈量</span>
-                </div>
-                <div class="next">
-                    <i class="fa-solid fa-play" style="color: #a07b67;"></i>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-briefcase" style="color: #a07b67;"></i>
-                    <span>設計報價</span>
-                </div>
-                <div class="next">
-                    <i class="fa-solid fa-play" style="color: #a07b67;"></i>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-screwdriver-wrench" style="color: #a07b67;"></i>
-                    <span>正式開工</span>
-                </div>
-                <div class="next">
-                    <i class="fa-solid fa-play" style="color: #a07b67;"></i>
-                </div>
                 <div class="card">
                     <i class="fa-solid fa-calendar-check" style="color: #a07b67;"></i>
                     <span>定期維護</span>
@@ -122,61 +74,20 @@
                 <h4>佈置服務</h4>
             </div>
             <div class="item">
-                <div class="card" data-aos="fade-up" data-aos-duration="3000">
+                <div class="card" data-aos="fade-up" data-aos-duration="3000" v-for="ser in serviceArray"
+                    :key="service">
                     <div class="pic">
-                        <img src="img/space/wedding.jpg">
+                        <img :src="ser.src">
                     </div>
                     <div class="txt">
-                        <h3>婚禮佈置</h3>
-                        <p>擁有專業團隊的婚禮花藝布置服務，精選優質花材，以獨特的設計概念打造浪漫而精緻的婚禮場景。結合創意與細膩，打造令人驚豔的花藝裝飾，營造浪漫氛圍，讓您的婚禮成為一場夢幻般的回憶。</p>
+                        <h3>{{ser.title}}</h3>
+                        <p>{{ser.content}}</p>
                     </div>
                     <div class="deco-r">
                         <img src="img/share/dotL.png" alt="">
                     </div>
                     <div class="fruit">
                         <img src="img/share/fruit.png" alt="">
-                    </div>
-                </div>
-                <div class="card" data-aos="fade-up" data-aos-duration="3000">
-                    <div class="pic">
-                        <img src="img/space/shopopen.jpg">
-                    </div>
-                    <div class="txt">
-                        <h3>開幕/店面花藝</h3>
-                        <p>擁有專業團隊的婚禮花藝布置服務，精選優質花材，以獨特的設計概念打造浪漫而精緻的婚禮場景。結合創意與細膩，打造令人驚豔的花藝裝飾，營造浪漫氛圍，讓您的婚禮成為一場夢幻般的回憶。</p>
-                    </div>
-                    <div class="deco-l">
-                        <img src="img/share/dotR.png" alt="">
-                    </div>
-                    <div class="leaf">
-                        <img src="img/share/bigleaf.png" alt="">
-                    </div>
-                </div>
-                <div class="card" data-aos="fade-up" data-aos-duration="3000">
-                    <div class="pic">
-                        <img src="img/space/office.jpg">
-                    </div>
-                    <div class="txt">
-                        <h3>辦公室佈置</h3>
-                        <p>擁有專業團隊的婚禮花藝布置服務，精選優質花材，以獨特的設計概念打造浪漫而精緻的婚禮場景。結合創意與細膩，打造令人驚豔的花藝裝飾，營造浪漫氛圍，讓您的婚禮成為一場夢幻般的回憶。</p>
-                    </div>
-                    <div class="deco-r">
-                        <img src="img/share/dotL.png" alt="">
-                    </div>
-                    <div class="tree">
-                        <img src="img/share/tree.png" alt="">
-                    </div>
-                </div>
-                <div class="card" data-aos="fade-up" data-aos-duration="3000">
-                    <div class="pic">
-                        <img src="img/space/home.jpg">
-                    </div>
-                    <div class="txt">
-                        <h3>居家佈置</h3>
-                        <p>擁有專業團隊的婚禮花藝布置服務，精選優質花材，以獨特的設計概念打造浪漫而精緻的婚禮場景。結合創意與細膩，打造令人驚豔的花藝裝飾，營造浪漫氛圍，讓您的婚禮成為一場夢幻般的回憶。</p>
-                    </div>
-                    <div class="deco-l">
-                        <img src="img/share/dotR.png" alt="">
                     </div>
                 </div>
             </div>
@@ -268,9 +179,28 @@
                         { link: 'space.html', name: '空間佈置' },
                         { link: 'contact.html', name: '聯絡我們' },
                     ],
+                    iconArr: [
+                        { iHref: 'signup.html', iClass1: 'fa-solid', iClass2: 'fa-user' },
+                        { iHref: 'buy.html', iClass1: 'fa-solid', iClass2: 'fa-cart-shopping' }
+                    ],
                     navClass: 'main-nav',
-                    //sign: { link: 'sign.html', name: '<i class="fa-solid fa-user" style="color: #9f9f9f;">' },
                     bannerImg: 'img/course/banner.jpg',
+                    processArray: [
+                        { pClass1: 'fa-solid', pClass2: 'fa-envelope-open-text', name: '免費諮詢' },
+                        { pClass1: 'fa-solid', pClass2: 'fa-comments', name: '專案討論' },
+                        { pClass1: 'fa-solid', pClass2: 'fa-clipboard-list', name: '簽訂合約' },
+                        { pClass1: 'fa-solid', pClass2: 'fa-ruler-combined', name: '現場丈量' },
+                        { pClass1: 'fa-solid', pClass2: 'fa-briefcase', name: '設計報價' },
+                        { pClass1: 'fa-solid', pClass2: 'fa-screwdriver-wrench', name: '正式開工' },
+                        // { pClass1: 'fa-solid', pClass2: 'fa-calendar-check', name: '定期維護' },
+                    ],
+
+                    serviceArray: [
+                        { src: 'img/space/wedding.jpg', title: '婚禮佈置', content: '擁有專業團隊的婚禮花藝布置服務，精選優質花材，以獨特的設計概念打造浪漫而精緻的婚禮場景。結合創意與細膩，打造令人驚豔的花藝裝飾，營造浪漫氛圍，讓您的婚禮成為一場夢幻般的回憶。' },
+                        { src: 'img/space/shopopen.jpg', title: '開幕/店面花藝', content: '擁有專業團隊的婚禮花藝布置服務，精選優質花材，以獨特的設計概念打造浪漫而精緻的婚禮場景。結合創意與細膩，打造令人驚豔的花藝裝飾，營造浪漫氛圍，讓您的婚禮成為一場夢幻般的回憶。' },
+                        { src: 'img/space/office.jpg', title: '辦公室佈置', content: '擁有專業團隊的婚禮花藝布置服務，精選優質花材，以獨特的設計概念打造浪漫而精緻的婚禮場景。結合創意與細膩，打造令人驚豔的花藝裝飾，營造浪漫氛圍，讓您的婚禮成為一場夢幻般的回憶。' },
+                        { src: 'img/space/home.jpg', title: '居家佈置', content: '擁有專業團隊的婚禮花藝布置服務，精選優質花材，以獨特的設計概念打造浪漫而精緻的婚禮場景。結合創意與細膩，打造令人驚豔的花藝裝飾，營造浪漫氛圍，讓您的婚禮成為一場夢幻般的回憶。' },
+                    ],
                     footerAboutArray: [
                         { link: '#', name: '品牌故事' },
                         { link: '#', name: '服務項目' },
@@ -301,15 +231,16 @@
                         '地址: 桃花市盆栽區花花街404號',
                         '營業時間: 12:00-19:00(週日‧週一公休)'
                     ],
-                    iconArr: [
-                        { eHref: 'signup.html', eClass1: 'fa-solid', eClass2: 'fa-user' },
-                        { eHref: 'buy.html', eClass1: 'fa-solid', eClass2: 'fa-cart-shopping' }
-                    ]
+
                 }
             }
         }).mount('#app')
     </script>
 
+    <script>AOS.init();</script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://kit.fontawesome.com/2d432a1e75.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
