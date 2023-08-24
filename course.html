@@ -17,25 +17,16 @@
 
     <div class="header">
         <nav class="logo">
-            <a href="index.html">
-                <img src="img/share/logo.svg" alt="logo">
-            </a>
+            <a :href="index"><img :src="logo" alt="logo"></a>
         </nav>
         <nav class="title">
-            <a v-for="(page, index) in headerNavArray" :key="index" :href="page.href"
+            <a v-for="(page, index) in navArray" :key="index" :href="page.href"
                 :class="headerClassName">{{page.name}}</a>
         </nav>
         <nav class="icon">
-            <a :class="iconClassName" :href="signup">
-                <i :class="userIcon">
-                </i>
-            </a>
-            <a :href="buy">
-                <i :class="shoppingIcon">
-                </i>
-            </a>
+            <a :class="iconClassName" :href="signup"><i :class="userIcon"></i></a>
+            <a :href="buy"><i :class="shoppingIcon"></i></a>
         </nav>
-
 
         <div class="hb">
             <!-- <label for="menu-switch"> -->
@@ -47,7 +38,7 @@
     </div>
     <!-- ----------------------------------------------------------------- -->
     <div class="banner">
-        <img src="img/course/banner.jpg" alt="">
+        <img :src="banner" alt="banner">
     </div>
 
     <!-- ----------------------------------------------------------------- -->
@@ -227,7 +218,7 @@
     <!-- ----------------------------------------------------------------- -->
     <div class="backtotop">
         <a href="#top">
-            <img src="img/share/top.png" alt="">
+            <img :src="top" alt="top">
         </a>
     </div>
 
@@ -235,60 +226,53 @@
 
     <div class="footer">
         <div class="wrap">
-            <div class="item">
-                <h3>認識我們</h3>
+            <div :class="footerItemClass">
+                <h3>{{footerTitle.know}}</h3>
                 <ul>
-                    <li><a href="#">品牌故事</a></li>
-                    <li><a href="#">服務項目</a></li>
-                    <li><a href="#">會員招募</a></li>
-                    <li><a href="#">廠商合作</a></li>
+                    <li v-for="(page, index) in footerKnowArray" :key="index"><a :href="page.href">{{page.name}}</a>
+                    </li>
                 </ul>
             </div>
-            <div class="item">
-                <h3>產品資訊</h3>
+            <div :class="footerItemClass">
+                <h3>{{footerTitle.product}}</h3>
                 <ul>
-                    <li><a href="#">婚禮花束</a></li>
-                    <li><a href="#">畢業花束</a></li>
-                    <li><a href="#">告白花束</a></li>
-                    <li><a href="#">空間佈置</a></li>
+                    <li v-for="(page, index) in footerProductArray" :key="index"><a :href="page.href">{{page.name}}</a>
+                    </li>
                 </ul>
             </div>
-            <div class="item">
-                <h3>顧客服務</h3>
+            <div :class="footerItemClass">
+                <h3>{{footerTitle.serve}}</h3>
                 <ul>
-                    <li><a href="#">會員登入</a></li>
-                    <li><a href="#">購物須知</a></li>
-                    <li><a href="#">包裹查詢</a></li>
-                    <li><a href="#">常見問題</a></li>
-                    <li><a href="#">如何保養</a></li>
+                    <li v-for="(page, index) in footerServeArray" :key="index"><a :href="page.href">{{page.name}}</a>
+                    </li>
                 </ul>
             </div>
-            <div class="items">
+            <div :class="footerItemClass">
                 <div class="contact">
-                    <h3>聯絡我們</h3>
+                    <h3>{{footerTitle.contact}}</h3>
                     <ul>
-                        <li>Preserve乾燥花</li>
-                        <li>Tel: 01-234-5678</li>
-                        <li>Email: preserve_info@mail.com</li>
+                        <li>{{footerContact.brand}}</li>
+                        <li>Tel: {{footerContact.tel}}</li>
+                        <li>Email: {{footerContact.email}}</li>
                         <div class="icon">
-                            <span><a href="#"><img src="img/share/line.png" alt=""></a></span>
-                            <span><a href="#"><img src="img/share/fb.png" alt=""></a></span>
-                            <span><a href="#"><img src="img/share/ig.png" alt=""></a></span>
-                            <span><img src="img/share/search.png"></span>
+                            <span v-for="(page, index) in footerIconArray" :key="index"><a :href="page.href"></a><img
+                                    :src="page.icon" alt="">
+                            </span>
+                            <span><img :src="footerSearch"></span>
                         </div>
                     </ul>
                 </div>
                 <div class="map">
-                    <h3>門市資訊</h3>
+                    <h3>{{footerTitle.shop}}</h3>
                     <ul>
-                        <li>Preserve乾燥花 桃花門市</li>
-                        <li>地址: 桃花市盆栽區花花街404號</li>
-                        <li>營業時間: 12:00-19:00 (週日‧週一公休)</li>
+                        <li>{{footerShop.shop}}</li>
+                        <li>地址: {{footerShop.add}}</li>
+                        <li>營業時間: {{footerShop.business}}</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <p>本網站為緯育TibaMe【CHD10323】前端工程師專業技術養成班學員作品,僅供學習、展示之用途。</p>
+        <p>{{copyright}}</p>
 
     </div>
 
@@ -298,24 +282,74 @@
         const app = Vue.createApp({
             data() {
                 return {
+                    index: 'index.html',
+                    logo: 'img/share/logo.svg',
                     headerClassName: 'main-nav',
-                    headerNavArray: [
+                    navArray: [
                         { href: 'about.html', name: '關於我們' },
                         { href: 'news.html', name: '最新消息' },
                         { href: 'product.html', name: '產品列表' },
                         { href: 'course.html', name: '花藝教室' },
                         { href: 'course.html', name: '花藝教室' },
                         { href: 'space.html', name: '空間佈置' },
-                        { href: 'contact.html', name: '聯絡我們' },
+                        { href: 'contact.html', name: '聯絡我們' }
                     ],
                     signup: 'signup.html',
                     buy: 'buy.html',
                     iconClassName: 'sign',
                     userIcon: 'fa-solid fa-user',
                     shoppingIcon: 'fa-solid fa-cart-shopping',
+                    banner: 'img/course/banner.jpg',
+                    top: 'img/share/top.png',
+                    footerItemClass: 'item',
+                    footerTitle: {
+                        know: '認識我們',
+                        product: '產品資訊',
+                        serve: '顧客服務',
+                        contact: '聯絡我們',
+                        shop: '門市資訊'
+                    },
+                    footerKnowArray: [
+                        { href: '#', name: '品牌故事' },
+                        { href: '#', name: '服務項目' },
+                        { href: '#', name: '會員招募' },
+                        { href: '#', name: '廠商合作' }
+                    ],
+                    footerProductArray: [
+                        { href: '#', name: '婚禮花束' },
+                        { href: '#', name: '畢業花束' },
+                        { href: '#', name: '告白花束' },
+                        { href: '#', name: '空間佈置' }
+                    ],
+                    footerServeArray: [
+                        { href: '#', name: '會員登入' },
+                        { href: '#', name: '購物須知' },
+                        { href: '#', name: '包裹查詢' },
+                        { href: '#', name: '常見問題' },
+                        { href: '#', name: '如何保養' }
+                    ],
+                    footerContact: {
+                        brand: 'Preserve乾燥花',
+                        tel: '01-234-5678',
+                        email: 'preserve_info@mail.com'
+                    },
+                    footerIconArray: [
+                        { href: '#', icon: 'img/share/line.png' },
+                        { href: '#', icon: 'img/share/fb.png' },
+                        { href: '#', icon: 'img/share/ig.png' }
+                    ],
+                    footerSearch: 'img/share/search.png',
+                    footerShop: {
+                        shop: 'Preserve乾燥花 桃花門市',
+                        add: '桃花市盆栽區花花街404號',
+                        business: '12:00-19:00 (週日‧週一公休)'
+                    },
+                    copyright: '本網站為緯育TibaMe【CHD10323】前端工程師專業技術養成班學員作品,僅供學習、展示之用途。'
                 }
             }
-        }).mount('.header')
+        }).mount('body')
+
+
     </script>
 </body>
 
