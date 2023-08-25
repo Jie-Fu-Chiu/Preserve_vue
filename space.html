@@ -32,11 +32,9 @@
 
 
             <div class="hb">
-                <!-- <label for="menu-switch"> -->
                 <span></span>
                 <span></span>
                 <span></span>
-                <!-- </label> -->
             </div>
         </div>
 
@@ -88,12 +86,15 @@
                         <h3>{{ser.title}}</h3>
                         <p>{{ser.content}}</p>
                     </div>
-                    <div class="deco-r">
-                        <img src="img/share/dotL.png" alt="">
-                    </div>
-                    <div class="fruit">
-                        <img src="img/share/fruit.png" alt="">
-                    </div>
+                </div>
+                <div class="deco-r">
+                    <img src="img/share/dotL.png" alt="">
+                </div>
+                <div class="fruit">
+                    <img src="img/share/fruit.png" alt="">
+                </div>
+                <div class="deco-l">
+                    <img src="img/share/dotR.png" alt="">
                 </div>
             </div>
         </article>
@@ -116,7 +117,7 @@
         <!-- ----------------------------------------------------------------- -->
         <div class="backtotop">
             <a href="#top">
-                <img src="img/share/top.png" alt="">
+                <img :src="backToTop" alt="">
             </a>
         </div>
 
@@ -145,17 +146,13 @@
                 <div class="items">
                     <div class="contact">
                         <h3>聯絡我們</h3>
-                        <ul>
-                            <li>Preserve乾燥花</li>
-                            <li>Tel: 01-234-5678</li>
-                            <li>Email: preserve_info@mail.com</li>
-                            <div class="icon">
-                                <span><a href="#"><img src="img/share/line.png" alt=""></a></span>
-                                <span><a href="#"><img src="img/share/fb.png" alt=""></a></span>
-                                <span><a href="#"><img src="img/share/ig.png" alt=""></a></span>
-                                <span><img src="img/share/search.png"></span>
-                            </div>
+                        <ul v-for="con in footerContactArray" :key="footer-contact">
+                            <li>{{con}}</li>
                         </ul>
+                        <div class="icon" v-for="icon in footerIconArray" :key="footer-icon">
+                            <span><a :href="icon.link"><img :src="icon.src" alt=""></a></span>
+                        </div>
+
                     </div>
                     <div class="map">
                         <h3>門市資訊</h3>
@@ -206,6 +203,9 @@
                         { src: 'img/space/office.jpg', title: '辦公室佈置', content: '擁有專業團隊的婚禮花藝布置服務，精選優質花材，以獨特的設計概念打造浪漫而精緻的婚禮場景。結合創意與細膩，打造令人驚豔的花藝裝飾，營造浪漫氛圍，讓您的婚禮成為一場夢幻般的回憶。' },
                         { src: 'img/space/home.jpg', title: '居家佈置', content: '擁有專業團隊的婚禮花藝布置服務，精選優質花材，以獨特的設計概念打造浪漫而精緻的婚禮場景。結合創意與細膩，打造令人驚豔的花藝裝飾，營造浪漫氛圍，讓您的婚禮成為一場夢幻般的回憶。' },
                     ],
+
+                    backToTop: "img/share/top.png",
+
                     footerAboutArray: [
                         { link: '#', name: '品牌故事' },
                         { link: '#', name: '服務項目' },
@@ -225,24 +225,29 @@
                         { link: '#', name: '常見問題' },
                         { link: '#', name: '如何保養' },
                     ],
-                    footerAboutArray: [
-                        { link: '#', name: '品牌故事' },
-                        { link: '#', name: '服務項目' },
-                        { link: '#', name: '會員招募' },
-                        { link: '#', name: '廠商合作' },
-                    ],
                     footerShopArray: [
                         'Preserve乾燥花 桃花門市',
                         '地址: 桃花市盆栽區花花街404號',
                         '營業時間: 12:00-19:00(週日‧週一公休)'
                     ],
+                    footerContactArray: [
+                        'Preserve乾燥花',
+                        'Tel: 01-234-5678',
+                        'Email: preserve_info@mail.com',
+                    ],
+                    footerIconArray: [
+                        { link: '#', src: 'img/share/line.png' },
+                        { link: '#', src: 'img/share/fb.png' },
+                        { link: '#', src: 'img/share/ig.png' },
+                        { link: '#', src: 'img/share/search.png' },
+                    ]
 
                 }
             }
         }).mount('#app')
     </script>
-    <script>AOS.init();</script>
 
+    <script>AOS.init();</script>
 </body>
 
 </html>

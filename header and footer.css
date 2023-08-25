@@ -265,7 +265,7 @@
 }
 
 .footer .icon {
-    display: flex;
+    display: inline-block;
 }
 
 .footer .icon span {

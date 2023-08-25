@@ -89,7 +89,10 @@ body {
     align-items: center;
     justify-content: space-between;
 }
-
+.cn{
+    display: flex;
+    align-items: center;
+}
 .process .card {
     text-align: center;
 }
@@ -97,11 +100,10 @@ body {
 .process .card i {
     font-size: 53px;
 }
-.process .next{
-}
+
 .process .next i {
     font-size: 20px;
-    /* margin-bottom: 27px; */
+    padding-left: 40px;
 }
 
 .process .card img {
@@ -154,6 +156,7 @@ body {
     max-width: 960px;
     width: 100%;
     margin: auto;
+    position: relative;
 }
 
 .service .card {
@@ -161,7 +164,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
 }
 
 .service .card .pic {
@@ -189,7 +191,7 @@ body {
 
 .service .deco-l {
     position: absolute;
-    top: -80px;
+    top: 380px;
     right: -60px;
 }
 
